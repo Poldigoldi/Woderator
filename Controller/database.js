@@ -20,7 +20,7 @@ module.exports = {
 
 	async getWorkout(req, res) {
 		try {
-			var sql = 'SELECT * FROM Workouts WHERE muscleGroup = ? AND Type = ?';
+			var sql = 'SELECT * FROM Workouts WHERE muscleGroup = ? AND type = ?';
 			con.query(sql, [req.params.MuscleGroup, req.params.Type], await function (err, result) {
 		    	res.render('workout', { MuscleGroup: req.params.MuscleGroup, Duration: req.params.Duration, EXERCISE: result });
 	  		});
@@ -32,12 +32,12 @@ module.exports = {
 	async submitWorkout(req, res) {
 		try {
 			var MuscleGroup = await req.body.MuscleGroup;
-			var Duration = await req.body.Duration;
+			var Duration = await req.body.Muration;
 			var Type = await req.body.Type;
 	  		await res.redirect('/workout/' + MuscleGroup + '/' + Duration + '/' + Type);
 		} catch {
-			console.log("submitWorkout ERROR: cannot submit wokrout")
+			console.log("submitWorkout ERROR: cannot submit workout")
 		}
 	}
-	
+
 };
