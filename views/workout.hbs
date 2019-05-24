@@ -1,0 +1,27 @@
+<h1>The WOD you chose:</h1>
+<p>Body part: {{ MuscleGroup }}</p>
+<p>Duration: {{ Duration }} minutes</p>
+
+<h2>Here are your exercises:</h2>
+
+<div class="row">
+	{{#each EXERCISE}}
+	<div class="Card">
+		<div class="col-sm-6">
+		    <div class="card">
+		      <div class="card-body">
+		        <h5 class="card-title">{{this.exercise}}</h5>
+		        <p class="card-text">
+		        	Focus Area: {{this.bodyPart}}
+	       		 	Repetitions: {{this.reps}}
+	        		# of Sets: {{this.sets}}
+		      	</p>
+		        <a href="#" class="btn btn-primary">Find out more</a>
+		      </div>
+		    </div>
+		  </div>
+    </div>
+    {{/each}}
+</div>
+
+    

@@ -1,0 +1,41 @@
+<head>
+	<title>{{ title }}</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<h1>Create Your Own WOD</h1>
+	<h2>World's simplest way to design your own workout sesh</h2>
+	<form action="/workout/submit" method="post">
+		<div>
+		What do you want to work out today? <br>
+			<select name="MuscleGroup">
+				<option value="full" >Full Body</option>
+				<option value="upper">Upper Body</option>
+				<option value="core">Core</option>
+				<option value="lower">Lower Body</option>
+			</select><br>
+		</div>
+		<div>
+			How much time do you have? <br>
+			<select name="Duration">
+				<option value="30" >30 minutes</option>
+				<option value="60">60 minutes</option>
+				<option value="90">90 minutes</option>
+				<option value="120">120 minutes</option>
+			</select><br>
+		</div>
+		<div>
+			What type of workout do you want? <br>
+			<select name="Type">
+				<option value="strength">Strength/Free Weights</option>
+				<option value="calisthenic">Calisthenic/Body Weight</option>
+				<option value="aerobic">Aerobic/Cardio</option>
+			</select><br>
+		</div>
+		<div>
+			<input class="button-primary" type="submit" value="Get Workout">
+			<input type="reset">
+		</div>
+	</form>
+</body>
