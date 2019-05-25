@@ -33,7 +33,6 @@ module.exports = {
 						workout.push(result[i]);
 					}
 				}
-
 		    	res.render('workout', { MuscleGroup: req.params.MuscleGroup, Duration: req.params.Duration, EXERCISE: workout });
 	  		});
 		} catch {

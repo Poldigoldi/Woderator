@@ -4,7 +4,7 @@
 
 <h2>Here are your exercises:</h2>
 
-<div class="row">
+{{!-- <div class="row">
 	{{#each EXERCISE}}
 	<div class="Card">
 		<div class="col-sm-6">
@@ -16,12 +16,31 @@
 	       		 	Repetitions: {{this.reps}}
 	        		# of Sets: {{this.sets}}
 		      	</p>
-		        <a href="#" class="btn btn-primary">Find out more</a>
+		        <a href="#" class="btn btn-primary">Tutorial</a>
 		      </div>
 		    </div>
 		  </div>
     </div>
     {{/each}}
-</div>
+</div>  --}}
+ 
 
-    
+<div class="row">
+	{{#each EXERCISE}}
+	<div class="flip-card">
+	  <div class="flip-card-inner">
+	    <div class="flip-card-front">
+	       <h5 class="card-title">{{this.exercise}}</h5>
+		        <p class="card-text">
+		        	Focus Area: {{this.bodyPart}}
+	       		 	Repetitions: {{this.reps}}
+	        		# of Sets: {{this.sets}}
+		      	</p>
+		        <a href="#" class="btn btn-primary">Tutorial</a>
+	    </div>
+	    <div class="flip-card-back">
+	      <iframe width="560" height="315" src={{this.video}} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	  </div>
+	</div>
+	{{/each}}
+</div>
