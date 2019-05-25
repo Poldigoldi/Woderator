@@ -24,9 +24,8 @@
     {{/each}}
 </div>  --}}
  
-
+{{#each EXERCISE}}
 <div class="row">
-	{{#each EXERCISE}}
 	<div class="flip-card">
 	  <div class="flip-card-inner">
 	    <div class="flip-card-front">
@@ -42,5 +41,6 @@
 	      <iframe width="560" height="315" src={{this.video}} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	  </div>
 	</div>
-	{{/each}}
 </div>
+{{/each}}
+

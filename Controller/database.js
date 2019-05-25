@@ -6,7 +6,23 @@ const con = mysql.createConnection({
 		  	database: "Workouts"
 		});
 
+shuffle = function(array) {
+	  var currentIndex = array.length, temporaryValue, randomIndex;
 
+	  // While there remain elements to shuffle...
+	  while (0 !== currentIndex) {
+
+	    // Pick a remaining element...
+	    randomIndex = Math.floor(Math.random() * currentIndex);
+	    currentIndex -= 1;
+
+	    // And swap it with the current element.
+	    temporaryValue = array[currentIndex];
+	    array[currentIndex] = array[randomIndex];
+	    array[randomIndex] = temporaryValue;
+ 		}
+  		return array;
+	};
 
 module.exports = { 
 	async createConnection() {
@@ -25,6 +41,7 @@ module.exports = {
 				var workout = [];
 				var workoutDuration = 0;
 				var desiredDuration = req.params.Duration;
+				result = shuffle(result);  //randomise workout
 
 				//Builds up workout cards for desired duration
 				for (var i = result.length - 1; i >= 0; i--) {
@@ -50,5 +67,4 @@ module.exports = {
 			console.log("submitWorkout ERROR: cannot submit workout")
 		}
 	}
-
 };
