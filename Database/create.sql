@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS Favourites;
 DROP TABLE IF EXISTS Workouts;
 
 CREATE TABLE Workouts (
@@ -10,6 +11,11 @@ CREATE TABLE Workouts (
   , type VARCHAR(100) NOT NULL
   , duration INTEGER NOT NULL
   , video TEXT
+);
+
+CREATE TABLE Favourites (
+	id INTEGER
+	, FOREIGN KEY (id) REFERENCES Workouts(id);
 );
 
 
@@ -42,6 +48,10 @@ INSERT INTO Workouts (muscleGroup, bodyPart, exercise, reps, sets, type, duratio
 INSERT INTO Workouts (muscleGroup, bodyPart, exercise, reps, sets, type, duration, video) VALUES ("Full", "All", "Spinning", 1, 1, "Aerobic", 45, "https://www.youtube.com/embed/AiDD_aqdnK0");
 INSERT INTO Workouts (muscleGroup, bodyPart, exercise, reps, sets, type, duration, video) VALUES ("Full", "Chest/Tricep", "Push up", 20, 5, "Aerobic", 10, "https://www.youtube.com/embed/_l3ySVKYVJ8");
 INSERT INTO Workouts (muscleGroup, bodyPart, exercise, reps, sets, type, duration, video) VALUES ("Full", "All", "Stationary Sprint", 30, 3, "Aerobic", 3, "https://www.youtube.com/embed/iYDY-d7UhgE");
+INSERT INTO Workouts (muscleGroup, bodyPart, exercise, reps, sets, type, duration, video) VALUES ("Full", "Back/Shoulders/Legs", "Clean & Jerk @ 60 kg", 30, 1, "Strength", 5, "https://www.youtube.com/embed/mqnF7j9coes");
+INSERT INTO Workouts (muscleGroup, bodyPart, exercise, reps, sets, type, duration, video) VALUES ("Full", "All", "Murph: 100 Pull Ups, 200 Push Ups, 300 Air Squats", 600, 1, "Strength", 60, "https://www.youtube.com/embed/GS5_87I8RDI");
+
+
 
 
 
