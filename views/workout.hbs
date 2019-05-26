@@ -1,46 +1,38 @@
-<h1>The WOD you chose:</h1>
-<p>Body part: {{ MuscleGroup }}</p>
-<p>Duration: {{ Duration }} minutes</p>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ title }}</title>
+	<link href="https://fonts.googleapis.com/css?family=Carter+One&display=swap" 
+	rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+	crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+</head>
+<body>
+	<h1 id="title">Your WOD is Ready!</h1>
+	<h4>Body part: {{ MuscleGroup }}</h4>
+	<h4>Duration: {{ Duration }} minutes</h4>
 
-<h2>Here are your exercises:</h2>
-
-{{!-- <div class="row">
+	<div class="grid-wrapper">
 	{{#each EXERCISE}}
-	<div class="Card">
-		<div class="col-sm-6">
-		    <div class="card">
-		      <div class="card-body">
-		        <h5 class="card-title">{{this.exercise}}</h5>
-		        <p class="card-text">
-		        	Focus Area: {{this.bodyPart}}
-	       		 	Repetitions: {{this.reps}}
-	        		# of Sets: {{this.sets}}
-		      	</p>
-		        <a href="#" class="btn btn-primary">Tutorial</a>
-		      </div>
-		    </div>
-		  </div>
-    </div>
-    {{/each}}
-</div>  --}}
- 
-{{#each EXERCISE}}
-<div class="row">
-	<div class="flip-card">
-	  <div class="flip-card-inner">
-	    <div class="flip-card-front">
-	       <h5 class="card-title">{{this.exercise}}</h5>
-		        <p class="card-text">
-		        	Focus Area: {{this.bodyPart}}
-	       		 	Repetitions: {{this.reps}}
-	        		# of Sets: {{this.sets}}
-		      	</p>
-		        <a href="#" class="btn btn-primary">Tutorial</a>
-	    </div>
-	    <div class="flip-card-back">
-	      <iframe width="560" height="315" src={{this.video}} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	  </div>
+	   <div class="box zone">
+	   	<div class="box-front">
+	   	 	<h1 class="card-title">{{this.exercise}}</h1>
+	        	<p class="card-text">
+	        		Focus Area: {{this.bodyPart}} <br>
+	    			Repetitions: {{this.reps}} <br>
+	     			# of Sets: {{this.sets}} <br>
+	      	</p>
+	      	<h5>Hover for video tutorial</h5>
+	      </div>
+	       <div class="box-back">
+	      	<iframe width="560" height="315" src="https://www.youtube.com/embed/kiGHHL5IYyY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	   	</div>
+	   </div>
+	{{/each}}
 	</div>
-</div>
-{{/each}}
+</body>
+</html>
+
 
