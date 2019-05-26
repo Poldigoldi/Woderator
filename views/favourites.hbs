@@ -2,8 +2,8 @@
 
 <div class ="row">
 	{{#each FAVOURITES}}
-	<h3>{{this.createdAt}}</h3>
-	<div>
+	<div id="{{this.favouriteID}}-card">
+		<h3>{{this.createdAt}}</h3>
 		{{#each this.exercises}}
 		<div class="card-body">
 			<h5 class="card-title">{{this.exercise}}</h5>
@@ -13,6 +13,46 @@
 			</p>
 		</div>
 		{{/each}}
+		<button type="button" class="btn btn-success" id="{{this.favouriteID}}">Remove</button>
 	</div>
 	{{/each}}
 </div> 
+
+<script type="text/javascript">
+if (document.addEventListener) {
+    document.addEventListener("click", handleClick, false);
+}
+else if (document.attachEvent) {
+    document.attachEvent("onclick", handleClick);
+}
+
+function handleClick(event) {
+    event = event || window.event;
+    event.target = event.target || event.srcElement;
+    let element = event.target;
+    while (element) {
+        if (element.nodeName === "BUTTON" && /btn-success/.test(element.className)) {
+            removeFavourite(element);
+            break;
+        }
+
+        element = element.parentNode;
+    }
+}
+
+async function removeFavourite(button) {
+	let favouriteID = button.getAttribute("id");
+	let response = await fetch(`http://localhost:8000/favourites/remove/${favouriteID}`, {
+		"method": "delete"
+	});
+	let data = await response.json()
+	if (data.message === "SUCCESS") {
+		const card = document.getElementById(`${favouriteID}-card`);
+		card.classList.add("fadeout");
+		setTimeout(() => {
+			card.remove();
+		}, 300);
+	}
+};
+
+</script>

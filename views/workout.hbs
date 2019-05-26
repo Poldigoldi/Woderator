@@ -43,7 +43,6 @@
 document.getElementById("likeButton").addEventListener("click", saveWorkout);
 document.getElementById("favouritesButton").addEventListener("click", getFavourites);
 
-
 async function saveWorkout(name) {
 	const cards = document.querySelectorAll(".Card");
 	const exerciseIDs = [];
@@ -64,6 +63,7 @@ async function saveWorkout(name) {
 	let data = await response.json()
 	if (data.message === "SUCCESS") {
 		document.getElementById("likeButton").textContent = "Saved!";
+		document.getElementById("likeButton").disabled = true;
 	}
 };
 

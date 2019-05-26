@@ -12,6 +12,7 @@ body {
 
 div {
   margin: 30px;
+  opacity: 1;
 }
 
 h1 {
@@ -99,5 +100,11 @@ iframe {
   height: 350px;
   margin-left: 12px;
   margin-top: -4px;
+}
+
+.fadeout {
+  opacity: 0;
+  transition: 0.3s all;
+
 }
 
