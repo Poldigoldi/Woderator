@@ -89,17 +89,7 @@ h5 {
   visibility: hidden;
 }
 
-<<<<<<< HEAD
 .box:hover .box-back {
   visibility: visible;
 }
 
-
-=======
-/* Style the back side */
-.flip-card-back {
-  background-color: dodgerblue;
-  color: white;
-  transform: rotateY(180deg);
-}
->>>>>>> c4dca1ba4ffa7aa33d4899a195db7e27d0fa1d9f
