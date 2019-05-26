@@ -1,18 +1,32 @@
-<h1>Favourite Workouts</h1>
-
-<div class ="row">
-	{{#each FAVOURITES}}
-	<h3>{{this.createdAt}}</h3>
-	<div>
-		{{#each this.exercises}}
-		<div class="card-body">
-			<h5 class="card-title">{{this.exercise}}</h5>
-			<p class="card-text">
-				Repetitions: {{this.reps}}
-				# of Sets: {{this.sets}}
-			</p>
-		</div>
-		{{/each}}
-	</div>
-	{{/each}}
-</div> 
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{{ title }}</title>
+		<link href="https://fonts.googleapis.com/css?family=Carter+One&display=swap" 
+		rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+		crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	</head>
+	<body>
+		<h1 class="main-title">Favourite Workouts</h1>
+			{{#each FAVOURITES}}
+				<div class="row">
+					<h3>{{this.createdAt}}</h3>
+						{{#each this.exercises}}
+							<div class="fav-body">
+								<h5 class="fav-title">{{this.exercise}}</h5>
+								<p class="fav-text">
+									Repetitions: {{this.reps}} <br>
+									# of Sets: {{this.sets}}
+								</p>
+							</div>	
+						{{/each}}
+				</div>
+				<br><button type:"button" class="btn btn-success" id="{{this.FavouriteID}}">
+					Remove
+				</button><br>
+			{{/each}}
+	</body>
+</html>

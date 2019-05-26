@@ -10,11 +10,11 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 </head>
 <body>
-	<h1>Make-A-WOD</h1>
-	<h2>A simple way to create your own workout</h2>
+	<h1 class="main-title">Make-A-WOD</h1>
+	<h2 class="subtitle">A simple way to create your own workout</h2>
 	<form action="/workout/submit" method="post">
 		<div id="dropdown">
-			<div>
+			<div class="questions">
 				<img src="/images/bicep.svg" height=130px><br><br>
 				What do you want to work out today? <br>
 				<select name="MuscleGroup">
@@ -24,7 +24,7 @@
 					<option value="Lower">Lower Body</option>
 				</select><br>
 			</div>
-			<div>
+			<div class="questions">
 				<br><img src="/images/clock.png" height=100px><br><br>
 				How much time do you have? <br>
 				<select name="Duration">
@@ -34,7 +34,7 @@
 					<option value="120">120 minutes</option>
 				</select><br>
 			</div>
-			<div>
+			<div class="questions">
 				<br><img src="/images/dumbbell.png" height=100px><br><br>
 				What type of workout do you want? <br>
 				<select name="Type">
