@@ -13,7 +13,6 @@
 	<h1 id="title">Your WOD is Ready!</h1>
 	<h4>Body part: {{ MuscleGroup }}</h4>
 	<h4>Duration: {{ Duration }} minutes</h4>
-
 	<div class="grid-wrapper">
 	{{#each EXERCISE}}
 	   <div class="box zone">
@@ -27,12 +26,10 @@
 	      	<h5>Hover for video tutorial</h5>
 	      </div>
 	       <div class="box-back">
-	      	<iframe width="560" height="315" src="https://www.youtube.com/embed/kiGHHL5IYyY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	      	<iframe width="560" height="315" src={{this.video}} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 	   	</div>
 	   </div>
 	{{/each}}
 	</div>
 </body>
 </html>
-
-
