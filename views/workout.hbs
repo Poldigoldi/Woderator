@@ -52,7 +52,6 @@ async function saveWorkout(name) {
 	const body = JSON.stringify({
 		exerciseIDs,
 	});
-	console.log(body)
 	let response = await fetch("http://localhost:8000/favourites", {
 		"method": "post",
 		body,
