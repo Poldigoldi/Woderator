@@ -78,7 +78,7 @@ module.exports = {
 				const sql2 = 'INSERT INTO Favourites (favouriteID, exerciseID) VALUES (?,?)';
 				con.query(sql2, [faveID, exerciseID]);
 			});
-			res.status(201).json({
+			res.status(200).json({
 				"message": "SUCCESS"
 			});
 		} catch {
@@ -86,6 +86,27 @@ module.exports = {
 				"message": "ERROR! saveFavourite: Could not insert into database."
 			});
 		}  
+	},
+
+	async removeFavourite(req, res) {
+		try {
+			const sql = 'DELETE FROM Favourites WHERE favouriteID = ?';
+			con.query(sql, [req.params.favouriteID], await function (err, result) {
+				if (result) {
+					res.status(200).json({
+						"message": "SUCCESS"
+					});
+				} else if (err) {
+					res.status(400).json({
+						"message": err
+					});
+				}
+			});
+		} catch {
+			res.status(500).json({
+				"message": "ERROR! getWorkout: could not get workout."
+			});
+		}
 	},
 
 	async getFavourites(req, res) {
@@ -140,7 +161,6 @@ module.exports = {
 						}
 					}
 				});
-				console.log(favourites);
 				res.render('favourites', { FAVOURITES: favourites });
 			});
 		} catch {

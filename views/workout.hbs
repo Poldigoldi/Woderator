@@ -43,28 +43,30 @@
 	document.getElementById("likeButton").addEventListener("click", saveWorkout);
 	document.getElementById("favouritesButton").addEventListener("click", getFavourites);
 
-	async function saveWorkout(name) {
-		const cards = document.querySelectorAll(".Card");
-		const exerciseIDs = [];
-		cards.forEach(card => {
-			exerciseIDs.push(card.getAttribute("id"));
-		});
-		const body = JSON.stringify({
-			exerciseIDs,
-		});
-		console.log(body)
-		let response = await fetch("http://localhost:8000/favourites", {
-			"method": "post",
-			body,
-			headers: {
-				"content-type": "application/json"
-			}
-		});
-		let data = await response.json()
-		if (data.message === "SUCCESS") {
-			document.getElementById("likeButton").textContent = "Saved!";
+
+async function saveWorkout(name) {
+	const cards = document.querySelectorAll(".Card");
+	const exerciseIDs = [];
+	cards.forEach(card => {
+		exerciseIDs.push(card.getAttribute("id"));
+	});
+	const body = JSON.stringify({
+		exerciseIDs,
+	});
+	console.log(body)
+	let response = await fetch("http://localhost:8000/favourites", {
+		"method": "post",
+		body,
+		headers: {
+			"content-type": "application/json"
 		}
-	};
+	});
+	let data = await response.json()
+	if (data.message === "SUCCESS") {
+		document.getElementById("likeButton").textContent = "Saved!";
+		document.getElementById("likeButton").disabled = true;
+	}
+};
 
 	async function getFavourites(req, res) {
 		try {
