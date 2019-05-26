@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 </head>
 <body>
-	<h1 id="title">Your WOD is Ready!</h1>
+	<h1 id="main-title">Your WOD is Ready!</h1>
 	<h4>Body part: {{ MuscleGroup }}</h4>
 	<h4>Duration: {{ Duration }} minutes</h4>
 	<div class="grid-wrapper">
@@ -40,8 +40,9 @@
 
 
 <script type="text/javascript">
-document.getElementById("likeButton").addEventListener("click", saveWorkout);
-document.getElementById("favouritesButton").addEventListener("click", getFavourites);
+	document.getElementById("likeButton").addEventListener("click", saveWorkout);
+	document.getElementById("favouritesButton").addEventListener("click", getFavourites);
+
 
 async function saveWorkout(name) {
 	const cards = document.querySelectorAll(".Card");
@@ -66,11 +67,11 @@ async function saveWorkout(name) {
 	}
 };
 
-async function getFavourites(req, res) {
-	try {
-		window.open("http://localhost:8000/favourites", "_self");
-	} catch  {
-		console.log("ERROR: getting Favourites");
-	}
-};
+	async function getFavourites(req, res) {
+		try {
+			window.open("http://localhost:8000/favourites", "_self");
+		} catch  {
+			console.log("ERROR: getting Favourites");
+		}
+	};
 </script>
