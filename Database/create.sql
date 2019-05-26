@@ -14,9 +14,13 @@ CREATE TABLE Workouts (
 );
 
 CREATE TABLE Favourites (
-	id INTEGER
-	, FOREIGN KEY (id) REFERENCES Workouts(id);
+  id INTEGER PRIMARY KEY AUTO_INCREMENT
+  , favouriteID TEXT NOT NULL
+  , exerciseID INT NOT NULL
+  , createdAt TIMESTAMP 
+  , FOREIGN KEY (exerciseID) REFERENCES Workouts(id)
 );
+
 
 
 INSERT INTO Workouts (muscleGroup, bodyPart, exercise, reps, sets, type, duration, video) VALUES ("Upper", "Bicep", "Curls", 10, 4, "Strength", 10, "https://www.youtube.com/embed/uO_CNYidOw0");

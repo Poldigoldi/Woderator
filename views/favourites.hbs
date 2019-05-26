@@ -1,0 +1,18 @@
+<h1>Favourite Workouts</h1>
+
+<div class ="row">
+	{{#each FAVOURITES}}
+	<h3>{{this.createdAt}}</h3>
+	<div>
+		{{#each this.exercises}}
+		<div class="card-body">
+			<h5 class="card-title">{{this.exercise}}</h5>
+			<p class="card-text">
+				Repetitions: {{this.reps}}
+				# of Sets: {{this.sets}}
+			</p>
+		</div>
+		{{/each}}
+	</div>
+	{{/each}}
+</div> 

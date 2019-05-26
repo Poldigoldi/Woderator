@@ -3,13 +3,11 @@ var router = express.Router();
 var mysql = require('mysql');
 var workoutController = require('../Controller/workout');
 var dbController = require('../Controller/database');
-var exercise;
 
-
-/* GET home page. */
 router.get('/', workoutController.home);
-
-router.get('/workout/:MuscleGroup/:Duration/:Type', dbController.getWorkout);
 router.post('/workout/submit', dbController.submitWorkout);
+router.get('/workout/:MuscleGroup/:Duration/:Type', dbController.getWorkout);
+router.post('/favourites', dbController.saveFavourite);
+router.get('/favourites', dbController.getFavourites);
 
 module.exports = router;

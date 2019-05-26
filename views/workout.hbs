@@ -14,22 +14,65 @@
 	<h4>Body part: {{ MuscleGroup }}</h4>
 	<h4>Duration: {{ Duration }} minutes</h4>
 	<div class="grid-wrapper">
-	{{#each EXERCISE}}
-	   <div class="box zone">
-	   	<div class="box-front">
-	   	 	<h1 class="card-title">{{this.exercise}}</h1>
-	        	<p class="card-text">
-	        		Focus Area: {{this.bodyPart}} <br>
-	    			Repetitions: {{this.reps}} <br>
-	     			# of Sets: {{this.sets}} <br>
-	      	</p>
-	      	<h5>Hover for video tutorial</h5>
-	      </div>
-	       <div class="box-back">
-	      	<iframe width="560" height="315" src= "{{this.video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	   	</div>
-	   </div>
-	{{/each}}
+		{{#each EXERCISE}}
+		<div class ="Card" id="{{this.id}}">
+			<div class="box zone">
+				<div class="box-front">
+					<h1 class="card-title">{{this.exercise}}</h1>
+					<p class="card-text">
+						Focus Area: {{this.bodyPart}} <br>
+						Repetitions: {{this.reps}} <br>
+						# of Sets: {{this.sets}} <br>
+					</p>
+					<h5>Hover for video tutorial</h5>
+				</div>
+				<div class="box-back">
+					<iframe width="560" height="315" src= "{{this.video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+		{{/each}}
+		
 	</div>
+	<button type="button" class="btn btn-success" id="likeButton">Like</button>
+	<button type="button" class="btn btn-success" id="favouritesButton">Favourites</button>
 </body>
 </html>
+
+
+<script type="text/javascript">
+document.getElementById("likeButton").addEventListener("click", saveWorkout);
+document.getElementById("favouritesButton").addEventListener("click", getFavourites);
+
+
+async function saveWorkout(name) {
+	const cards = document.querySelectorAll(".Card");
+	const exerciseIDs = [];
+	cards.forEach(card => {
+		exerciseIDs.push(card.getAttribute("id"));
+	});
+	const body = JSON.stringify({
+		exerciseIDs,
+	});
+	console.log(body)
+	let response = await fetch("http://localhost:8000/favourites", {
+		"method": "post",
+		body,
+		headers: {
+			"content-type": "application/json"
+		}
+	});
+	let data = await response.json()
+	if (data.message === "SUCCESS") {
+		document.getElementById("likeButton").textContent = "Saved!";
+	}
+};
+
+async function getFavourites(req, res) {
+	try {
+		window.open("http://localhost:8000/favourites", "_self");
+	} catch  {
+		console.log("ERROR: getting Favourites");
+	}
+};
+</script>

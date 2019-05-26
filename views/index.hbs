@@ -49,5 +49,19 @@
 			<input type="reset">
 		</div>
 	</form>
+	<button type="button" class="btn btn-success" id="favouritesButton">Favourites</button>
 </body>
 </html>
+
+
+
+<script type="text/javascript">
+document.getElementById("favouritesButton").addEventListener("click", getFavourites);
+async function getFavourites(req, res) {
+	try {
+		window.open("http://localhost:8000/favourites", "_self");
+	} catch  {
+		console.log("ERROR: getting Favourites");
+	}
+};
+</script>
