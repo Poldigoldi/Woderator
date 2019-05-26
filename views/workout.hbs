@@ -15,20 +15,24 @@
 	<h4>Duration: {{ Duration }} minutes</h4>
 	<div class="grid-wrapper">
 	{{#each EXERCISE}}
-	   <div class="box zone">
-	   	<div class="box-front">
-	   	 	<h1 class="card-title">{{this.exercise}}</h1>
-	        	<p class="card-text">
-	        		Focus Area: {{this.bodyPart}} <br>
-	    			Repetitions: {{this.reps}} <br>
-	     			# of Sets: {{this.sets}} <br>
-	      	</p>
-	      	<h5>Hover for video tutorial</h5>
-	      </div>
-	       <div class="box-back">
-	      	<iframe width="560" height="315" src= "{{this.video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-	   	</div>
-	   </div>
+		<div class="Card">
+		   <div class="box zone">
+		   	<div class="box-front">
+		   	 	<h1 class="card-title">{{this.exercise}}</h1>
+		        	<p class="card-text">
+		        		Focus Area: {{this.bodyPart}} <br>
+		    			Repetitions: {{this.reps}} <br>
+		     			# of Sets: {{this.sets}} <br>
+		      	</p>
+		      	<h5>Hover for video tutorial</h5>
+		      </div>
+		       <div class="box-back">
+		      	<iframe src= "{{this.video}}" frameborder="0" 
+		      	allow="accelerometer; autoplay; encrypted-media; gyroscope; 
+		      	picture-in-picture" allowfullscreen></iframe>
+		   	</div>
+		   </div>
+		</div>
 	{{/each}}
 	</div>
 </body>
