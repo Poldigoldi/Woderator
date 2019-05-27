@@ -5,6 +5,18 @@ body {
   margin: 30px;
 }
 
+.logo {
+  position: absolute;
+  left:100px;
+   height:130px;
+}
+
+.trademark {
+  position: fixed;
+  height: 80px;
+  left: 20px;
+  bottom: 20px;
+}
 
 #dropdown {
   display: inline-flex;
@@ -28,7 +40,6 @@ input {
 select {
   margin: 30px;
 }
-
 
 .btn {
     border: none;
@@ -71,12 +82,16 @@ select {
     overflow: hidden;
 }
 
-
-
-.main-title {
+.home-title {
+  font-family: 'Lobster', cursive;
   text-decoration: underline;
   font-size: 75px;
-  font-weight: bold;
+}
+
+.workoutpageTitle {
+  font-family: 'Lobster', cursive;
+  text-decoration: underline;
+  font-size: 50px;
 }
 
 .subtitle {
@@ -143,7 +158,8 @@ h5 {
 .box-back {
   visibility: hidden;
   position: absolute;
-  top: 25px;
+  top: 100px;
+  right: 39px;
 }
 
 .box:hover {
@@ -161,9 +177,7 @@ h5 {
 iframe {
   width: 100%;
   height: 100%;
-  padding: 5px;
 }
-
 
 .fadeout {
   opacity: 0;
@@ -203,6 +217,3 @@ margin-bottom: 0px;
 .fav-title {
   text-decoration: underline;
 }
-
-
-

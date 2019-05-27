@@ -3,13 +3,15 @@
 	<head>
 		<title>{{ title }}</title>
 		<link href="https://fonts.googleapis.com/css?family=Mandali&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
 		crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 	</head>
 	<body background="/images/background.jpg">
-		<h1 class="workoutpageTitle" id="main-title">Your WOD is Ready!</h1>
+		<img src="/images/logo.png" class="logo" height=100px>
+		<h1 class="workoutpageTitle">Your WOD is Ready!</h1>
 		<h4>Body part: {{ MuscleGroup }}</h4>
 		<h4>Duration: {{ Duration }} minutes</h4>
 		<div class="grid-wrapper">
@@ -35,52 +37,52 @@
 		<button type="button" class="btn btn-danger" id="likeButton">Like</button>
 		<button type="button" class="btn btn-success" id="favouritesButton">Favourites</button>
 		<button type="button" class="btn btn-primary" id="homeButton">Home</button>
+		<object class="trademark" data="/images/trademark.svg">Browser does not support svg</object>
 	</body>
 </html>
 
 
 <script type="text/javascript">
-document.getElementById("likeButton").addEventListener("click", saveWorkout);
-document.getElementById("favouritesButton").addEventListener("click", getFavourites);
-document.getElementById("homeButton").addEventListener("click", returnHome);
+	document.getElementById("likeButton").addEventListener("click", saveWorkout);
+	document.getElementById("favouritesButton").addEventListener("click", getFavourites);
+	document.getElementById("homeButton").addEventListener("click", returnHome);
 
-
-async function saveWorkout(name) {
-	const cards = document.querySelectorAll(".Card");
-	const exerciseIDs = [];
-	cards.forEach(card => {
-		exerciseIDs.push(card.getAttribute("id"));
-	});
-	const body = JSON.stringify({
-		exerciseIDs,
-	});
-	let response = await fetch("http://localhost:8000/favourites", {
-		"method": "post",
-		body,
-		headers: {
-			"content-type": "application/json"
+	async function saveWorkout(name) {
+		const cards = document.querySelectorAll(".Card");
+		const exerciseIDs = [];
+		cards.forEach(card => {
+			exerciseIDs.push(card.getAttribute("id"));
+		});
+		const body = JSON.stringify({
+			exerciseIDs,
+		});
+		let response = await fetch("http://localhost:8000/favourites", {
+			"method": "post",
+			body,
+			headers: {
+				"content-type": "application/json"
+			}
+		});
+		let data = await response.json()
+		if (data.message === "SUCCESS") {
+			document.getElementById("likeButton").textContent = "Saved!";
+			document.getElementById("likeButton").disabled = true;
 		}
-	});
-	let data = await response.json()
-	if (data.message === "SUCCESS") {
-		document.getElementById("likeButton").textContent = "Saved!";
-		document.getElementById("likeButton").disabled = true;
 	}
-};
 
-async function getFavourites(req, res) {
-	try {
-		window.open("http://localhost:8000/favourites", "_self");
-	} catch  {
-		console.log("ERROR: getting Favourites");
+	async function getFavourites(req, res) {
+		try {
+			window.open("http://localhost:8000/favourites", "_self");
+		} catch  {
+			console.log("ERROR: getting Favourites");
+		}
 	}
-};
 
-async function returnHome() {
-	try {
-		window.open("http://localhost:8000", "__self");
-	} catch {
-		console.log("ERROR: returnHome")
+	async function returnHome() {
+		try {
+			window.open("http://localhost:8000", "__self");
+		} catch {
+			console.log("ERROR: returnHome")
+		}
 	}
-};
 </script>

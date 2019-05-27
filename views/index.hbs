@@ -3,13 +3,15 @@
 <head>
 	<title>{{ title }}</title>
 	<link href="https://fonts.googleapis.com/css?family=Mandali&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
 	crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 </head>
 <body background="/images/background.jpg">
-	<h1 class="main-title">Make-A-WOD</h1>
+	<img src="/images/logo.png" class="logo">
+	<h1 class="home-title">Make-A-WOD</h1>
 	<h2 class="subtitle">A simple way to create your own workout!</h2>
 	<form action="/workout/submit" method="post">
 		<div id="dropdown">
@@ -49,17 +51,18 @@
 		</div>
 	</form>
 	<button type="button" class="btn btn-success" id="favouritesButton">Favourites</button>
+	<object class="trademark" data="/images/trademark.svg">Browser does not support svg</object>
 </body>
 </html>
 
 
 <script type="text/javascript">
-document.getElementById("favouritesButton").addEventListener("click", getFavourites);
-async function getFavourites(req, res) {
-	try {
-		window.open("http://localhost:8000/favourites", "_self");
-	} catch  {
-		console.log("ERROR: getting Favourites");
+	document.getElementById("favouritesButton").addEventListener("click", getFavourites);
+	async function getFavourites(req, res) {
+		try {
+			window.open("http://localhost:8000/favourites", "_self");
+		} catch  {
+			console.log("ERROR: getting Favourites");
+		}
 	}
-};
 </script>

@@ -3,13 +3,15 @@
 	<head>
 		<title>{{ title }}</title>
 		<link href="https://fonts.googleapis.com/css?family=Mandali&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
 		crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 	</head>
 	<body background="/images/background.jpg">
-		<h1 class="main-title">Favourite Workouts</h1>
+		<img src="/images/logo.png" class="logo" height=100px>
+		<h1 class="home-title">Favourite Workouts</h1>
 		<button type="button" class="btn btn-primary" id="homeButton">Home</button>
 		<h2 class="subtitle">All your liked workouts are displayed here</h2>
 			{{#each FAVOURITES}}
@@ -28,53 +30,54 @@
 					</button>
 				</div>
 			{{/each}}
+		<object class="trademark" data="/images/trademark.svg">Browser does not support svg</object>
 	</body>
 </html>
 
+
 <script type="text/javascript">
-document.getElementById("homeButton").addEventListener("click", returnHome);
-if (document.addEventListener) {
-    document.addEventListener("click", handleClick, false);
-}
-else if (document.attachEvent) {
-    document.attachEvent("onclick", handleClick);
-}
-
-function handleClick(event) {
-    event = event || window.event;
-    event.target = event.target || event.srcElement;
-    let element = event.target;
-    while (element) {
-        if (element.nodeName === "BUTTON" && /btn-danger/.test(element.className)) {
-            removeFavourite(element);
-            break;
-        }
-        element = element.parentNode;
-    }
-}
-
-async function removeFavourite(button) {
-	let favouriteID = button.getAttribute("id");
-	console.log(favouriteID);
-	let response = await fetch(`http://localhost:8000/favourites/remove/${favouriteID}`, {
-		"method": "delete"
-	});
-	let data = await response.json()
-	if (data.message === "SUCCESS") {
-		const card = document.getElementById(`${favouriteID}-card`);
-		card.classList.add("fadeout");
-		setTimeout(() => {
-			card.remove();
-		}, 300);
+	document.getElementById("homeButton").addEventListener("click", returnHome);
+	if (document.addEventListener) {
+	    document.addEventListener("click", handleClick, false);
 	}
-};
+	else if (document.attachEvent) {
+	    document.attachEvent("onclick", handleClick);
+	}
 
-async function returnHome() {
+	function handleClick(event) {
+	    event = event || window.event;
+	    event.target = event.target || event.srcElement;
+	    let element = event.target;
+	    while (element) {
+	        if (element.nodeName === "BUTTON" && /btn-danger/.test(element.className)) {
+	            removeFavourite(element);
+	            break;
+	        }
+	        element = element.parentNode;
+	    }
+	}
+
+	async function removeFavourite(button) {
+		let favouriteID = button.getAttribute("id");
+		console.log(favouriteID);
+		let response = await fetch(`http://localhost:8000/favourites/remove/${favouriteID}`, {
+			"method": "delete"
+		});
+		let data = await response.json()
+		if (data.message === "SUCCESS") {
+			const card = document.getElementById(`${favouriteID}-card`);
+			card.classList.add("fadeout");
+			setTimeout(() => {
+				card.remove();
+			}, 300);
+		}
+	}
+
+	async function returnHome() {
 		try {
 			window.open("http://localhost:8000", "__self");
 		} catch {
 			console.log("ERROR: returnHome")
 		}
-	};
-
+	}
 </script>
