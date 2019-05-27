@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>{{ title }}</title>
-	<link href="https://fonts.googleapis.com/css?family=Assistant:200&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
-	crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
-</head>
-<body>
-	<h1 class="workoutpageTitle" id="main-title">Your WOD is Ready!</h1>
-	<h4>Body part: {{ MuscleGroup }}</h4>
-	<h4>Duration: {{ Duration }} minutes</h4>
-	<div class="grid-wrapper">
-		{{#each EXERCISE}}
-		<div class ="Card" id="{{this.id}}">
-			<div class="box zone">
-				<div class="box-front">
-					<h1 class="card-title">{{this.exercise}}</h1>
-					<p class="card-text">
-						Focus Area: {{this.bodyPart}} <br>
-						Repetitions: {{this.reps}} <br>
-						# of Sets: {{this.sets}} <br>
-					</p>
-					<h5>Hover for video tutorial</h5>
-				</div>
-				<div class="box-back">
-					<iframe src= "{{this.video}}" frameborder="0" allowfullscreen></iframe>
+	<head>
+		<title>{{ title }}</title>
+		<link href="https://fonts.googleapis.com/css?family=Assistant:200&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+		crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	</head>
+	<body background="/images/background.jpg">
+		<h1 class="workoutpageTitle" id="main-title">Your WOD is Ready!</h1>
+		<h4>Body part: {{ MuscleGroup }}</h4>
+		<h4>Duration: {{ Duration }} minutes</h4>
+		<div class="grid-wrapper">
+			{{#each EXERCISE}}
+			<div class ="Card" id="{{this.id}}">
+				<div class="box zone">
+					<div class="box-front">
+						<h1 class="card-title">{{this.exercise}}</h1>
+						<p class="card-text">
+							Focus Area: {{this.bodyPart}} <br>
+							Repetitions: {{this.reps}} <br>
+							# of Sets: {{this.sets}} <br>
+						</p>
+						<h5>Hover for video tutorial</h5>
+					</div>
+					<div class="box-back">
+						<iframe src= "{{this.video}}" frameborder="0" allowfullscreen></iframe>
+					</div>
 				</div>
 			</div>
+			{{/each}}
 		</div>
-		{{/each}}
-	</div>
-	<button type="button" class="btn btn-danger" id="likeButton">Like</button>
-	<button type="button" class="btn btn-success" id="favouritesButton">Favourites</button>
+		<button type="button" class="btn btn-danger" id="likeButton">Like</button>
+		<button type="button" class="btn btn-success" id="favouritesButton">Favourites</button>
 		<button type="button" class="btn btn-primary" id="homeButton">Home</button>
-
-</body>
+	</body>
 </html>
 
 
