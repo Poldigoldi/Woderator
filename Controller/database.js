@@ -78,7 +78,7 @@ module.exports = {
 				const sql2 = 'INSERT INTO Favourites (favouriteID, exerciseID) VALUES (?,?)';
 				con.query(sql2, [faveID, exerciseID]);
 			});
-			res.status(200).json({
+			res.status(201).json({
 				"message": "SUCCESS"
 			});
 		} catch {
@@ -90,6 +90,7 @@ module.exports = {
 
 	async removeFavourite(req, res) {
 		try {
+			console.log(req.params.favouriteID);
 			const sql = 'DELETE FROM Favourites WHERE favouriteID = ?';
 			con.query(sql, [req.params.favouriteID], await function (err, result) {
 				if (result) {

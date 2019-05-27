@@ -2,15 +2,14 @@
 <html>
 <head>
 	<title>{{ title }}</title>
-	<link href="https://fonts.googleapis.com/css?family=Carter+One&display=swap" 
-	rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Assistant:200&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
 	crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 </head>
 <body>
-	<h1 id="main-title">Your WOD is Ready!</h1>
+	<h1 class="workoutpageTitle" id="main-title">Your WOD is Ready!</h1>
 	<h4>Body part: {{ MuscleGroup }}</h4>
 	<h4>Duration: {{ Duration }} minutes</h4>
 	<div class="grid-wrapper">
@@ -27,21 +26,24 @@
 					<h5>Hover for video tutorial</h5>
 				</div>
 				<div class="box-back">
-					<iframe width="560" height="315" src= "{{this.video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe src= "{{this.video}}" frameborder="0" allowfullscreen></iframe>
 				</div>
 			</div>
 		</div>
 		{{/each}}
 	</div>
-	<button type="button" class="btn btn-success" id="likeButton">Like</button>
+	<button type="button" class="btn btn-danger" id="likeButton">Like</button>
 	<button type="button" class="btn btn-success" id="favouritesButton">Favourites</button>
+		<button type="button" class="btn btn-primary" id="homeButton">Home</button>
+
 </body>
 </html>
 
 
 <script type="text/javascript">
-	document.getElementById("likeButton").addEventListener("click", saveWorkout);
-	document.getElementById("favouritesButton").addEventListener("click", getFavourites);
+document.getElementById("likeButton").addEventListener("click", saveWorkout);
+document.getElementById("favouritesButton").addEventListener("click", getFavourites);
+document.getElementById("homeButton").addEventListener("click", returnHome);
 
 
 async function saveWorkout(name) {
@@ -67,11 +69,19 @@ async function saveWorkout(name) {
 	}
 };
 
-	async function getFavourites(req, res) {
-		try {
-			window.open("http://localhost:8000/favourites", "_self");
-		} catch  {
-			console.log("ERROR: getting Favourites");
-		}
-	};
+async function getFavourites(req, res) {
+	try {
+		window.open("http://localhost:8000/favourites", "_self");
+	} catch  {
+		console.log("ERROR: getting Favourites");
+	}
+};
+
+async function returnHome() {
+	try {
+		window.open("http://localhost:8000", "__self");
+	} catch {
+		console.log("ERROR: returnHome")
+	}
+};
 </script>

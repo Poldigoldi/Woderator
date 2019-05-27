@@ -2,22 +2,21 @@
 <html>
 <head>
 	<title>{{ title }}</title>
-	<link href="https://fonts.googleapis.com/css?family=Carter+One&display=swap" 
-	rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Assistant:200&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
 	crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 </head>
-<body>
+<body background="images/background.jpg">
 	<h1 class="main-title">Make-A-WOD</h1>
-	<h2 class="subtitle">A simple way to create your own workout</h2>
+	<h2 class="subtitle">A simple way to create your own workout!</h2>
 	<form action="/workout/submit" method="post">
 		<div id="dropdown">
 			<div class="questions">
 				<img src="/images/bicep.svg" height=130px><br><br>
 				What do you want to work out today? <br>
-				<select name="MuscleGroup">
+				<select name="MuscleGroup" class="menu">
 					<option value="Full" >Full Body</option>
 					<option value="Upper">Upper Body</option>
 					<option value="Mid">Core</option>
@@ -27,7 +26,7 @@
 			<div class="questions">
 				<br><img src="/images/clock.png" height=100px><br><br>
 				How much time do you have? <br>
-				<select name="Duration">
+				<select name="Duration" class="menu">
 					<option value="30" >30 minutes</option>
 					<option value="60">60 minutes</option>
 					<option value="90">90 minutes</option>
@@ -37,7 +36,7 @@
 			<div class="questions">
 				<br><img src="/images/dumbbell.png" height=100px><br><br>
 				What type of workout do you want? <br>
-				<select name="Type">
+				<select name="Type" class="menu">
 					<option value="Strength" >Strength/Free Weights</option>
 					<option value="Calisthenics">Calisthenic/Body Weight</option>
 					<option value="Aerobic">Aerobic/Cardio</option>
@@ -45,14 +44,13 @@
 			</div>
 		</div>	
 		<div>
-			<input class="button-primary" type="submit" value="Get Workout">
-			<input type="reset">
+			<input class="btn btn-primary" type="submit" value="Get Workout">
+			<input class="btn btn-danger" type="reset">
 		</div>
 	</form>
 	<button type="button" class="btn btn-success" id="favouritesButton">Favourites</button>
 </body>
 </html>
-
 
 
 <script type="text/javascript">

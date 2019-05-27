@@ -2,8 +2,7 @@
 <html>
 	<head>
 		<title>{{ title }}</title>
-		<link href="https://fonts.googleapis.com/css?family=Carter+One&display=swap" 
-		rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Assistant:200&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
 		crossorigin="anonymous">
@@ -11,9 +10,10 @@
 	</head>
 	<body>
 		<h1 class="main-title">Favourite Workouts</h1>
+		<h2 class="subtitle">All your liked workouts are displayed here</h2>
 			{{#each FAVOURITES}}
 				<div class="row" id="{{this.favouriteID}}-card">
-					<h3>{{this.createdAt}}</h3>
+					<h3 class="date">{{this.createdAt}}</h3>
 						{{#each this.exercises}}
 							<div class="fav-body">
 								<h5 class="fav-title">{{this.exercise}}</h5>
@@ -23,15 +23,16 @@
 								</p>
 							</div>	
 						{{/each}}
+					<button type="button" class="btn btn-success" id="{{this.favouriteID}}">Remove
+					</button>
 				</div>
-				<br><button type:"button" class="btn btn-success" id="{{this.FavouriteID}}">
-					Remove
-				</button><br>
 			{{/each}}
+		<button type="button" class="btn btn-primary" id="homeButton">Home</button>
 	</body>
 </html>
 
 <script type="text/javascript">
+document.getElementById("homeButton").addEventListener("click", returnHome);
 if (document.addEventListener) {
     document.addEventListener("click", handleClick, false);
 }
@@ -54,6 +55,7 @@ function handleClick(event) {
 
 async function removeFavourite(button) {
 	let favouriteID = button.getAttribute("id");
+	console.log(favouriteID);
 	let response = await fetch(`http://localhost:8000/favourites/remove/${favouriteID}`, {
 		"method": "delete"
 	});
@@ -66,5 +68,13 @@ async function removeFavourite(button) {
 		}, 300);
 	}
 };
+
+async function returnHome() {
+		try {
+			window.open("http://localhost:8000", "__self");
+		} catch {
+			console.log("ERROR: returnHome")
+		}
+	};
 
 </script>

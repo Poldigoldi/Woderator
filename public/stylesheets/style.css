@@ -1,20 +1,23 @@
 body {
-  font-family: 'Carter One', cursive;
+  font-family: 'Assistant', sans-serif;
   font-size: 20px;
   text-align: center;
   margin: 30px;
-  background: linear-gradient(to right, rgb(255, 251, 0), rgb(0, 253, 255));
 }
+
 
 #dropdown {
   display: inline-flex;
+  flex-wrap: wrap;
 }
 
 .questions {
-  border: solid 5px;
+  border: 3px solid black;
+  border-radius: 10px;
   padding: 20px;
   margin-top: 0px;
   margin: 20px;
+
 }
 
 input {
@@ -26,20 +29,58 @@ select {
   margin: 30px;
 }
 
-#favouritesButton {
-  margin:0px;
+
+.btn {
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    background: none;
+    cursor: pointer;
+    padding: 10px 40px;
+    display: inline-block;
+    margin: 15px 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
 }
 
-#likeButton {
-  margin: 0px;
+.btn-danger {
+    border-radius: 25px;
+    border: 1.5px solid #d60019;
+    color: #d60019;
+    overflow: hidden;
 }
+
+.btn-primary {
+    border-radius: 50px;
+    border: 1.5px solid #1262d9;
+    color: #1262d9;
+    overflow: hidden;
+}
+
+.btn-success {
+    border-radius: 50px;
+    border: 1.5px solid #019114;
+    color: #019114;
+    overflow: hidden;
+}
+
+
 
 .main-title {
   text-decoration: underline;
+  font-size: 75px;
+  font-weight: bold;
 }
 
 .subtitle {
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 
 h5 {
@@ -57,10 +98,11 @@ h5 {
 .card-title {
   text-decoration: none;
   padding-bottom: 10px;
+  font-size: 25px;
 }
 
 .card-text {
-  font-size: 25px;
+  font-size: 20px;
   border: dashed white 2px;
   padding: 30px;
 }
@@ -88,13 +130,14 @@ h5 {
  **********************************************************************/
 .grid-wrapper {
   display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
 }
 
 .box {
-  background-color: #444;
-  border: solid black 4px;
+  background-color: #91908f;
+  border: solid black 3px;
+  border-radius: 10px;
 }
 
 .box-back {
@@ -118,6 +161,7 @@ h5 {
 iframe {
   width: 100%;
   height: 100%;
+  padding: 5px;
 }
 
 
@@ -143,12 +187,6 @@ iframe {
 .fav-title {
   text-decoration: underline;
 }
-
-
-
-
-
-
 
 
 
