@@ -1,5 +1,5 @@
 body {
-  font-family: 'Assistant', sans-serif;
+  font-family: 'Mandali', sans-serif;
   font-size: 20px;
   text-align: center;
   margin: 30px;
@@ -168,12 +168,28 @@ iframe {
 .fadeout {
   opacity: 0;
   transition: 0.3s all;
+}
 
 .row {
   display: inline-block;
   column-count: 1;
     margin: 20px;
   margin-top: 50px;
+}
+
+#homeButton {
+  position: absolute;
+  top: 12px;
+  right: 30px;
+  margin: 50px;
+}
+
+#favouritesButton {
+  margin-bottom: 0px;
+}
+
+#likeButton {
+margin-bottom: 0px;
 }
 
 .fav-body {
